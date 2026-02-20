@@ -1,0 +1,21 @@
+### Criar nova order
+POST http://localhost:3000/webhooks/orders
+Content-Type: application/json
+
+{
+    "customer": { "email": "caio@inbazz.com", "name": "Caio", "cep": "29102035" },
+    "items": [{ "sku": "DEF456", "qty": 5, "unit_price": 109.9 }],
+    "currency": "BRL"
+}
+
+### Retornar todas as Orders
+GET http://localhost:3000/orders
+
+### Retornar Order by Id
+GET http://localhost:3000/orders/dedf7291-14aa-4cf9-8a81-dc2850922c35
+
+### Retornar metricas da fila
+GET http://localhost:3000/queue/metrics
+
+### Retornar metricas da dlq
+GET http://localhost:3000/queue/dlq
