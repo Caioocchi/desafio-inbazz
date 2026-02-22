@@ -19,7 +19,6 @@ constructor(private readonly ordersService: OrdersService) {}
 
     @Get('orders/:id')
     async getOrderById(@Param('id') id: string) {
-        console.log(id)
         const developer = await this.ordersService.getOrderById(id);
         if (!developer) throw new NotFoundException();
         return developer;

@@ -56,16 +56,21 @@ export class OrdersService {
 
   async getOrders(filter: FilterOrdersDto) {
     const where: any = {};
+    let orders: Array<CreateOrderDto> = []
+    let count = 0
     
     if (filter.status) {
       where.status = filter.status;
     }
 
-    if ((await this.repository.find({ where })).length === 0 ) {
+    orders = await this.repository.find({ where })
+    count = orders.length
+
+    if ((orders).length === 0 ) {
       throw new NotFoundException('Nenhum registro encontrado') 
     }
 
-    return this.repository.find({ where });
+    return {count: count, orders: orders};
   }
 
   getOrderById(order_id: string) {
