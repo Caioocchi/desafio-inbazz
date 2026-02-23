@@ -13,8 +13,8 @@ constructor(private readonly ordersService: OrdersService) {}
     }
 
     @Get('/orders')
-    getOrders(@Query() query: FilterOrdersDto) {
-        return this.ordersService.getOrders(query)
+    getOrders(@Query() filter: FilterOrdersDto) {
+        return this.ordersService.getOrders(filter)
     }
 
     @Get('orders/:id')
